@@ -1,7 +1,7 @@
 import "./App.css";
 //import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage.js";
+import MainPage from "./pages/MainPage.js";
 
 function App() {
   // const [names, setNames] = useState([]);
@@ -23,7 +23,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/">
-          <Homepage></Homepage>
+          <MainPage />
         </Route>
       </Switch>
     </Router>
