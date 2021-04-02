@@ -1,33 +1,42 @@
 import "../NavBar.css";
 //import useLocation from "react-router-dom";
 
-export default function NavBarComponent() {
+export default function NavBarComponent({ onHamburgerClick }) {
   // const location = useLocation();
   // console.log("render NavigationComponent", location);
 
   return (
-    <nav className="navbar navbar-expand-xxl navbar-light bg-dark">
+    <nav className="navbar navbar-expand-xxl navbar-dark bg-dark">
       <div className="container-fluid">
-        <div />
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={onHamburgerClick}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
         <form className="d-flex">
           <div className="input-group m-1 text-center">
             <input
               type="text"
-              className="form-control border border-light bg-light"
+              className="form-control border border-secondary bg-light"
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-light" type="button">
+            <button className="btn btn-secondary" type="button">
               <i className="bi bi-search"></i>
             </button>
           </div>
         </form>
-        <div class="d-inline bg-dark text-light fw-light">
+        <div className="d-inline bg-dark text-light fw-light">
           Username
-          <i
-            class="bi bi-emoji-smile-fill"
-            style={{ fontSize: "1.5rem", color: "white", margin: "0.5rem" }}
-          ></i>
+          <i className="bi bi-emoji-smile-fill"></i>
         </div>
       </div>
     </nav>
