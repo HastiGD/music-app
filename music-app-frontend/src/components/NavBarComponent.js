@@ -25,7 +25,7 @@ export default function NavBarComponent({ onHamburgerClick }) {
           <div className="input-group m-1 text-center">
             <input
               type="text"
-              className="form-control border border-secondary bg-light"
+              className="form-control bg-light"
               placeholder="Search"
               aria-label="Search"
             />
