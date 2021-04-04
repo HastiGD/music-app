@@ -24,10 +24,6 @@ export default function MainPage() {
     document.getElementById("main").style.marginLeft = "0";
   };
 
-  const goHome = () => {
-    console.log("In goHome");
-  };
-
   const renderLinks = () => {
     console.log("In renderLinks");
     return links.map((link, i) => (
@@ -50,10 +46,6 @@ export default function MainPage() {
           <br />
           <br />
           <ul>{renderLinks()}</ul>
-
-          <button type="button" className="btn btn-info" onClick={goHome}>
-            Home
-          </button>
         </div>
       </div>
 
