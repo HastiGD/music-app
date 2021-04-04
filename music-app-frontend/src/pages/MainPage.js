@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBarComponent from "../components/NavBarComponent.js";
 import SideBarComponent from "../components/SideBarComponent.js";
 import VideoComponent from "../components/VideoComponent.js";
@@ -14,8 +14,8 @@ export default function MainPage() {
     "bi bi-star",
   ];
 
-  let src = "https://www.youtube.com/embed/cwYAeUpH1NM?start=8";
-  let country = "United States";
+  let country = "Colombia";
+  let [src, setSrc] = useState("");
 
   const openNav = () => {
     console.log("In openNav");
@@ -30,11 +30,22 @@ export default function MainPage() {
   };
 
   const renderLinks = () => {
-    console.log("In renderLinks");
     return links.map((link, i) => (
       <SideBarComponent key={"Link" + i} icon={icons[i]} link={link} />
     ));
   };
+
+  useEffect(() => {
+    console.log("in useEffect");
+    const fetchVideo = async () => {
+      const resRaw = await fetch(`/country/${country}`);
+      const res = await resRaw.json();
+      console.log("Got country", res.country, "and genre", res.genre);
+      setSrc(res.src);
+    };
+    console.log("fetching video");
+    fetchVideo();
+  }, [country]);
 
   return (
     <div>
