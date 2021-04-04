@@ -1,7 +1,8 @@
 import React from "react";
 import NavBarComponent from "../components/NavBarComponent.js";
-import "../MainPage.css";
 import SideBarComponent from "../components/SideBarComponent.js";
+import VideoComponent from "../components/VideoComponent.js";
+import "../MainPage.css";
 
 export default function MainPage() {
   const links = ["Home", "Countries", "Genres", "Add music", "Favorites"];
@@ -12,6 +13,10 @@ export default function MainPage() {
     "bi bi-plus-circle",
     "bi bi-star",
   ];
+
+  let src = "https://www.youtube.com/embed/cwYAeUpH1NM?start=8";
+  let country = "United States";
+
   const openNav = () => {
     console.log("In openNav");
     document.getElementById("mySidenav").style.width = "200px";
@@ -50,7 +55,7 @@ export default function MainPage() {
       </div>
 
       <div id="main">
-        <h1>My Front</h1>
+        <VideoComponent src={src} country={country}></VideoComponent>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores,
           enim fuga possimus, eos aliquid odit obcaecati, quod nisi blanditiis
