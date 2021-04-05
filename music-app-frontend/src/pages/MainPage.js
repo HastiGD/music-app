@@ -5,6 +5,7 @@ import VideoComponent from "../components/VideoComponent.js";
 import "../MainPage.css";
 
 export default function MainPage() {
+  // Links and Icons in SideNav
   const links = ["Home", "Countries", "Genres", "Add music", "Favorites"];
   const icons = [
     "bi bi-house-fill",
@@ -14,43 +15,52 @@ export default function MainPage() {
     "bi bi-star",
   ];
 
-  let [country, setCountry] = useState("Colombia");
-  let [src, setSrc] = useState("");
-
+  // Opens SideNav
   const openNav = () => {
-    console.log("In openNav");
     document.getElementById("mySidenav").style.width = "200px";
     document.getElementById("main").style.marginLeft = "150px";
   };
 
+  // Closes SideNav
   const closeNav = () => {
-    console.log("In closeNav");
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   };
 
+  // Renders links in SideNav
   const renderLinks = () => {
     return links.map((link, i) => (
       <SideBarComponent key={"Link" + i} icon={icons[i]} link={link} />
     ));
   };
 
+  // Choose random country from list
+  const countries = ["united states", "colombia", "iran", "china"];
+  const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+
+  // Display random video
+  let [country, setCountry] = useState(randomCountry);
+  let [src, setSrc] = useState("");
+
+  // Callback function for searching
+  const handleSearch = (searchQuery) => {
+    setCountry(searchQuery);
+  };
+
+  // Rerender MainPage whenever country is searched
   useEffect(() => {
     console.log("in useEffect");
     const fetchVideo = async () => {
       const resRaw = await fetch(`/country/${country}`);
       const res = await resRaw.json();
-      console.log("Got country", res.country, "and genre", res.genre);
+      console.log("Got video", res.src);
       setSrc(res.src);
     };
     console.log("fetching video");
     fetchVideo();
   }, [country]);
 
-  function handleSearch(query) {
-    console.log("Back in parent ready to search for", query);
-  }
-
+  console.log("Rendering MainPage");
   return (
     <div>
       <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />

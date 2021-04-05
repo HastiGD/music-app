@@ -1,9 +1,11 @@
+import React from "react";
+import PropTypes from "prop-types";
 import "../NavBar.css";
 
-export default function NavBarComponent({ onHamburgerClick, onSearch }) {
-  let query;
+function NavBarComponent({ onHamburgerClick, onSearch }) {
+  let query = "";
 
-  console.log("render");
+  console.log("Rendering NavBar");
   return (
     <nav className="navbar navbar-expand-xxl navbar-dark bg-dark">
       <div className="container-fluid">
@@ -34,6 +36,7 @@ export default function NavBarComponent({ onHamburgerClick, onSearch }) {
               aria-label="Search"
               onChange={(evt) => {
                 query = evt.target.value;
+                query = query.toLowerCase();
               }}
               onKeyPress={(evt) => {
                 if (evt.code === "Enter") {
@@ -41,10 +44,14 @@ export default function NavBarComponent({ onHamburgerClick, onSearch }) {
                 }
               }}
             />
+
             <button
               className="btn btn-secondary"
               type="button"
-              onClick={onSearch(query)}
+              onClick={(evt) => {
+                evt.preventDefault();
+                onSearch(query);
+              }}
             >
               <i className="bi bi-search"></i>
             </button>
@@ -58,3 +65,10 @@ export default function NavBarComponent({ onHamburgerClick, onSearch }) {
     </nav>
   );
 }
+
+NavBarComponent.propTypes = {
+  onHamburgerClick: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
+};
+
+export default NavBarComponent;

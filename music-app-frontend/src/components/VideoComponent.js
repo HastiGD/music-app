@@ -1,7 +1,7 @@
 //import React, { useState, useEffect } from "react";
 
 export default function VideoComponent({ src, country }) {
-  console.log("render");
+  console.log("Rendering Video");
   return (
     <div>
       <h1 className="display-6">Check out this song from {country}</h1>
