@@ -14,7 +14,7 @@ export default function MainPage() {
     "bi bi-star",
   ];
 
-  let country = "Colombia";
+  let [country, setCountry] = useState("Colombia");
   let [src, setSrc] = useState("");
 
   const openNav = () => {
@@ -47,9 +47,13 @@ export default function MainPage() {
     fetchVideo();
   }, [country]);
 
+  function handleSearch(query) {
+    console.log("Back in parent ready to search for", query);
+  }
+
   return (
     <div>
-      <NavBarComponent onHamburgerClick={openNav} />
+      <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
       <div id="mySidenav" className="sidenav">
         <div className="navs">
           <button
