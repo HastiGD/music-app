@@ -1,53 +1,11 @@
 import React, { useState, useEffect } from "react";
-import NavBarComponent from "../components/NavBarComponent.js";
-//import SideBarComponent from "../components/SideBarComponent.js";
 import VideoComponent from "../components/VideoComponent.js";
 import "../MainPage.css";
 
-export default function MainPage() {
-  // Links and Icons in SideNav
-  // const links = ["Home", "Countries", "Genres", "Add music", "Favorites"];
-  // const icons = [
-  //   "bi bi-house-fill",
-  //   "bi bi-geo-alt",
-  //   "bi bi-music-note-list",
-  //   "bi bi-plus-circle",
-  //   "bi bi-star",
-  // ];
-
-  // Opens SideNav
-  const openNav = () => {
-    document.getElementById("mySidenav").style.width = "200px";
-    document.getElementById("main").style.marginLeft = "150px";
-  };
-
-  // // Closes SideNav
-  // const closeNav = () => {
-  //   document.getElementById("mySidenav").style.width = "0";
-  //   document.getElementById("main").style.marginLeft = "0";
-  // };
-
-  // // Renders links in SideNav
-  // const renderLinks = () => {
-  //   return links.map((link, i) => (
-  //     <SideBarComponent key={"Link" + i} icon={icons[i]} link={link} />
-  //   ));
-  // };
-
-  // Returns random country from list
-  const countries = ["united states", "colombia", "iran", "china"];
-  const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-
-  // Displays a video
-  let [country, setCountry] = useState(randomCountry);
+export default function MainPage({ country }) {
   let [src, setSrc] = useState("");
 
-  // Callback function for searching
-  const handleSearch = (searchQuery) => {
-    setCountry(searchQuery);
-  };
-
-  // Rerender MainPage whenever country is searched
+  // Rerender MainPage whenever user searches for new country
   useEffect(() => {
     console.log("in useEffect");
     const fetchVideo = async () => {
@@ -63,7 +21,6 @@ export default function MainPage() {
   console.log("Rendering MainPage");
   return (
     <div>
-      <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
       <VideoComponent src={src} country={country}></VideoComponent>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, enim

@@ -1,8 +1,9 @@
-import "./App.css";
-//import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage.js";
 import SideBarComponent from "./components/SideBarComponent.js";
+import NavBarComponent from "./components/NavBarComponent.js";
+import "./App.css";
 
 function App() {
   // Links and Icons in SideNav
@@ -16,10 +17,10 @@ function App() {
   ];
 
   // Opens SideNav
-  // const openNav = () => {
-  //   document.getElementById("mySidenav").style.width = "200px";
-  //   document.getElementById("main").style.marginLeft = "150px";
-  // };
+  const openNav = () => {
+    document.getElementById("mySidenav").style.width = "200px";
+    document.getElementById("main").style.marginLeft = "150px";
+  };
 
   // Closes SideNav
   const closeNav = () => {
@@ -34,8 +35,21 @@ function App() {
     ));
   };
 
+  // Returns random country from list
+  const countries = ["united states", "colombia", "iran", "china"];
+  const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+
+  let [country, setCountry] = useState(randomCountry);
+
+  // Callback function for searching in NavBarComponent
+  const handleSearch = (searchQuery) => {
+    setCountry(searchQuery);
+  };
+
+  console.log("Rendering App");
   return (
     <Router>
+      <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
       <div id="mySidenav" className="sidenav">
         <div className="navs">
           <button
@@ -54,7 +68,7 @@ function App() {
       <div id="main">
         <Switch>
           <Route path="/">
-            <MainPage />
+            <MainPage country={country} />
           </Route>
         </Switch>
       </div>
