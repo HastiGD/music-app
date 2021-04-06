@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage.js";
+import AddMusicPage from "./pages/AddMusicPage.js";
 import SideBarComponent from "./components/SideBarComponent.js";
 import NavBarComponent from "./components/NavBarComponent.js";
 import "./App.css";
 
 function App() {
-  // Links and Icons in SideNav
-  const links = ["Home", "Countries", "Genres", "Add music", "Favorites"];
-  const icons = [
-    "bi bi-house-fill",
-    "bi bi-geo-alt",
-    "bi bi-music-note-list",
-    "bi bi-plus-circle",
-    "bi bi-star",
-  ];
-
   // Opens SideNav
   const openNav = () => {
     document.getElementById("mySidenav").style.width = "200px";
@@ -26,13 +17,6 @@ function App() {
   const closeNav = () => {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
-  };
-
-  // Renders links in SideNav
-  const renderLinks = () => {
-    return links.map((link, i) => (
-      <SideBarComponent key={"Link" + i} icon={icons[i]} link={link} />
-    ));
   };
 
   // Returns random country from list
@@ -50,23 +34,26 @@ function App() {
   return (
     <Router>
       <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
+
       <div id="mySidenav" className="sidenav">
-        <div className="navs">
-          <button
-            type="button"
-            className="btn-close btn-close-white"
-            aria-label="Close"
-            onClick={closeNav}
-          />
-          <br />
-          <br />
-          <br />
-          <ul>{renderLinks()}</ul>
-        </div>
+        <button
+          type="button"
+          className="btn-close btn-close-white"
+          aria-label="Close"
+          onClick={closeNav}
+        />
+        <br />
+        <br />
+        <br />
+        <SideBarComponent />
       </div>
 
       <div id="main">
         <Switch>
+          <Route path="/add">
+            <AddMusicPage />
+          </Route>
+
           <Route path="/">
             <MainPage country={country} />
           </Route>

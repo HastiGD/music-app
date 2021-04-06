@@ -10,13 +10,8 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
     <nav className="navbar navbar-expand-xxl navbar-dark bg-dark">
       <div className="container-fluid">
         <button
-          className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarToggleExternalContent"
-          aria-controls="navbarToggleExternalContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          className="btn btn-dark"
           onClick={onHamburgerClick}
         >
           <span className="navbar-toggler-icon"></span>
@@ -44,7 +39,6 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
                 }
               }}
             />
-
             <button
               className="btn btn-secondary"
               type="button"
@@ -57,6 +51,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
             </button>
           </div>
         </form>
+
         <div className="d-inline bg-dark text-light fw-light">
           Username
           <i className="bi bi-emoji-smile-fill"></i>
