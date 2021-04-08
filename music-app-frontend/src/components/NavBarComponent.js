@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../NavBar.css";
 
 function NavBarComponent({ onHamburgerClick, onSearch }) {
   let query = "";
 
   console.log("Rendering NavBar");
   return (
-    <nav className="navbar navbar-expand-xxl navbar-dark bg-dark">
-      <div className="container-fluid">
-        <button
-          type="button"
-          className="btn btn-dark"
-          onClick={onHamburgerClick}
-        >
-          <span className="navbar-toggler-icon"></span>
+    <nav
+      className="navbar navbar-expand-xxl navbar-dark"
+      style={{ backgroundColor: "#301b3f" }}
+    >
+      <div className="container-fluid m-0">
+        <button type="button" className="btn" onClick={onHamburgerClick}>
+          <span
+            className="navbar-toggler-icon"
+            style={{ fontSize: "1.5rem" }}
+          ></span>
         </button>
 
         <form
@@ -26,7 +27,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
           <div className="input-group m-1 text-center">
             <input
               type="text"
-              className="form-control bg-light"
+              className="form-control bg-dark text-light border border-secondary"
               placeholder="Search"
               aria-label="Search"
               onChange={(evt) => {
@@ -40,7 +41,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
               }}
             />
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary p-0"
               type="button"
               onClick={(evt) => {
                 evt.preventDefault();
@@ -52,7 +53,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
           </div>
         </form>
 
-        <div className="d-inline bg-dark text-light fw-light">
+        <div className="d-inline text-light fw-light">
           Username
           <i className="bi bi-emoji-smile-fill"></i>
         </div>
