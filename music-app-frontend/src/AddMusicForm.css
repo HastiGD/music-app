@@ -1,0 +1,22 @@
+form {
+  width: 50%;
+}
+
+.addMusicForm {
+  border: 2px solid #301b3f;
+  border-radius: 5px;
+}
+
+input {
+}
+
+.form-group {
+  margin: 15px;
+}
+
+label {
+  color: white;
+}
+
+select {
+}

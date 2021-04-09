@@ -22,4 +22,14 @@ router.get("/country/:country", function (req, res) {
   res.send({ genre: "jazz", src: src });
 });
 
+router.post("/newSong", function (req, res) {
+  // this needs a call to the db
+  const url = req.body.url;
+  const country = req.body.country;
+  const desc = req.body.desc;
+  console.log("url:", url, "country:", country, "description:", desc);
+
+  res.send({ added: true });
+});
+
 module.exports = router;

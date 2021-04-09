@@ -1,7 +1,86 @@
+import React, { useState } from "react";
+import AddMusicFormComponent from "../components/AddMusicFormComponent.js";
 import "../AddMusicPage.css";
-const countries = require("../Countries.json");
 
 export default function AddMusicPage() {
+  const Countries = require("../Countries.json").Countries;
+
+  let [url, setUrl] = useState(undefined);
+  let [country, setCountry] = useState(undefined);
+  let [desc, setDesc] = useState(undefined);
+  let [showAlert, setShowAlert] = useState([false, "", ""]);
+  //let [reload, setReload] = useState(0);
+
+  // RegExp copied from https://stackoverflow.com/a/28735569/13894374
+  function validateUrl(value) {
+    if (value !== undefined) {
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|\?v=)([^#&?]*).*/;
+      var match = value.match(regExp);
+      if (match && match[2].length === 11) {
+        setUrl(value);
+      } else {
+        setShowAlert([true, "danger", "Invalid url"]);
+      }
+    }
+  }
+
+  function validateForm() {
+    if (country !== undefined) {
+      if (desc !== undefined && desc !== "") {
+        if (url !== undefined && url !== "") {
+          if (showAlert[0]) {
+            setShowAlert([false, "", ""]);
+          }
+          postInputs();
+        } else {
+          setShowAlert([true, "danger", "Missing URL"]);
+        }
+      } else {
+        setShowAlert([true, "danger", "Missing Description"]);
+      }
+    } else {
+      setShowAlert([true, "danger", "Missing Country"]);
+    }
+  }
+
+  function onChangeHandler() {
+    if (showAlert[0]) {
+      setShowAlert([false, "", ""]);
+    }
+  }
+
+  function onBlurHandler(evt, caller) {
+    switch (caller) {
+      case "url":
+        validateUrl(evt.target.value);
+        break;
+      case "country":
+        setCountry(evt.target.value);
+        break;
+      case "desc":
+        setDesc(evt.target.value);
+        break;
+      default:
+        break;
+    }
+  }
+
+  async function postInputs() {
+    const reqOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ url: url, country: country, desc: desc }),
+    };
+    const resRaw = await fetch("/newSong", reqOptions);
+    const res = await resRaw.json();
+    console.log("Added newSong", res);
+    setShowAlert([true, "success", "Song added!"]);
+  }
+
+  console.log("Rendering AddMusicPage");
   return (
     <div>
       <div className="formInfo">
@@ -13,42 +92,16 @@ export default function AddMusicPage() {
           significance, or anything else you'd like to tell viewers about it!
         </p>
       </div>
-
-      <form className="addMusicForm">
-        <div className="form-group">
-          <label className="text-light fw-light">YouTube Video</label>
-          <input
-            type="url"
-            className="form-control bg-dark text-light border-secondary"
-            placeholder="url"
-          />
-        </div>
-        <div className="form-group">
-          <label className="text-light fw-light">Select Country</label>
-          <select className="form-control bg-dark text-light border-secondary">
-            {countries.Countries.map((country) => (
-              <option key={country}>{country}</option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label className="text-light fw-light">
-            Tell viewers why you chose this video
-          </label>
-          <textarea
-            className="form-control bg-dark text-light border-secondary"
-            rows="3"
-          ></textarea>
-        </div>
-        <div className="form-group">
-          <button
-            type="button"
-            className="btn btn-dark text-light fw-light border-secondary"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+      <AddMusicFormComponent
+        countriesArray={Countries}
+        onChange={onChangeHandler}
+        onBlur={onBlurHandler}
+        onSubmit={validateForm}
+        error={showAlert[0]}
+        errorType={showAlert[1]}
+        errorMessage={showAlert[2]}
+        onErrorClose={() => window.location.reload(false)}
+      />
     </div>
   );
 }

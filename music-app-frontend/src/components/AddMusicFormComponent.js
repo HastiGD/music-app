@@ -1,0 +1,85 @@
+import React from "react";
+import PropTypes from "prop-types";
+import AlertComponent from "../components/AlertComponent.js";
+import "../AddMusicForm.css";
+
+AddMusicFormComponent.propTypes = {
+  countriesArray: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+};
+
+export default function AddMusicFormComponent({
+  countriesArray,
+  onChange,
+  onBlur,
+  onSubmit,
+  error,
+  errorType,
+  errorMessage,
+  onErrorClose,
+}) {
+  console.log("Rendering AddMusicFormComponent");
+  return (
+    <div>
+      {error ? (
+        <AlertComponent
+          type={errorType}
+          message={errorMessage}
+          onClick={onErrorClose}
+        ></AlertComponent>
+      ) : null}
+      <form className="addMusicForm">
+        <div className="form-group">
+          <label className="text-light fw-light">YouTube Video</label>
+          <input
+            type="url"
+            className="form-control bg-dark text-light border-secondary"
+            placeholder="url"
+            onChange={onChange}
+            onBlur={(evt) => onBlur(evt, "url")}
+          />
+        </div>
+        <div className="form-group">
+          <label className="text-light fw-light">Country</label>
+          <select
+            className="form-control bg-dark text-light border-secondary"
+            defaultValue={"DEFAULT"}
+            onChange={onChange}
+            onBlur={(evt) => onBlur(evt, "country")}
+          >
+            <option value="DEFAULT" disabled>
+              Select country
+            </option>
+            {countriesArray.map((country) => (
+              <option key={country}>{country}</option>
+            ))}
+          </select>
+        </div>
+        <div className="form-group">
+          <label className="text-light fw-light">
+            Tell viewers why you chose this video
+          </label>
+          <textarea
+            className="form-control bg-dark text-light border-secondary"
+            rows="3"
+            onChange={onChange}
+            onBlur={(evt) => onBlur(evt, "desc")}
+          ></textarea>
+        </div>
+        <div className="form-group">
+          <button
+            type="button"
+            className="btn btn-dark text-light fw-light border-secondary"
+            onClick={onSubmit}
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
