@@ -37,6 +37,35 @@ function myDB() {
       client.close();
     }
   };
+
+  mydb.addSong = async (song) => {
+    console.log("In mydb.addSong");
+    let client;
+    try {
+      // Connect to db
+      client = new MongoClient(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log("Connecting to db: ", DB_NAME);
+      await client.connect();
+      console.log("Connected!");
+      // Connect to collection
+      const db = client.db(DB_NAME);
+      const songsCol = db.collection("songs");
+      console.log("Ready to insert", song);
+      // Insert in collection
+      const res = await songsCol.insertOne(song);
+      return res;
+    } catch (e) {
+      console.log(e);
+    } finally {
+      // Disconnect from db
+      console.log("Closing connection");
+      client.close();
+    }
+  };
+
   return mydb;
 }
 module.exports = myDB();

@@ -8,6 +8,7 @@ export default function AddMusicPage() {
   let [url, setUrl] = useState(undefined);
   let [country, setCountry] = useState(undefined);
   let [desc, setDesc] = useState(undefined);
+  let [genre, setGenre] = useState(undefined);
   let [showAlert, setShowAlert] = useState([false, "", ""]);
 
   // RegExp copied from https://stackoverflow.com/a/28735569/13894374
@@ -59,24 +60,42 @@ export default function AddMusicPage() {
       case "desc":
         setDesc(evt.target.value);
         break;
+      case "genre":
+        setGenre(evt.target.value);
+        break;
       default:
         break;
     }
   }
 
   async function postInputs() {
-    const reqOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ url: url, country: country, desc: desc }),
-    };
-    const resRaw = await fetch("/newSong", reqOptions);
-    const res = await resRaw.json();
-    console.log("Added newSong", res);
-    setShowAlert([true, "success", "Song added!"]);
+    try {
+      const reqOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          url: url,
+          country: country,
+          desc: desc,
+          genre: genre,
+        }),
+      };
+      const resRaw = await fetch("/newSong", reqOptions);
+      const res = await resRaw.json();
+      console.log("res", res);
+      console.log("Added newSong", res);
+      setShowAlert([true, "success", "Song added!"]);
+    } catch (e) {
+      console.log("Error", e);
+    }
+  }
+
+  function onErrorCloseHandler() {
+    console.log("Refreshing page");
+    window.location.reload(false);
   }
 
   console.log("Rendering AddMusicPage");
@@ -99,7 +118,7 @@ export default function AddMusicPage() {
         error={showAlert[0]}
         errorType={showAlert[1]}
         errorMessage={showAlert[2]}
-        onErrorClose={() => window.location.reload(false)}
+        onErrorClose={onErrorCloseHandler}
       />
     </div>
   );

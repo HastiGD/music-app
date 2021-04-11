@@ -9,7 +9,9 @@ AddMusicFormComponent.propTypes = {
   onBlur: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.bool.isRequired,
+  errorType: PropTypes.string,
   errorMessage: PropTypes.string.isRequired,
+  onErrorClose: PropTypes.func.isRequired,
 };
 
 export default function AddMusicFormComponent({
@@ -48,7 +50,6 @@ export default function AddMusicFormComponent({
           <select
             className="form-control bg-dark text-light border-secondary"
             defaultValue={"DEFAULT"}
-            onChange={onChange}
             onBlur={(evt) => onBlur(evt, "country")}
           >
             <option value="DEFAULT" disabled>
@@ -58,6 +59,15 @@ export default function AddMusicFormComponent({
               <option key={country}>{country}</option>
             ))}
           </select>
+        </div>
+        <div className="form-group">
+          <label className="text-light fw-light">Genre</label>
+          <input
+            type="text"
+            className="form-control bg-dark text-light border-secondary"
+            placeholder="genre"
+            onBlur={(evt) => onBlur(evt, "genre")}
+          />
         </div>
         <div className="form-group">
           <label className="text-light fw-light">

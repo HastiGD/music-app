@@ -27,14 +27,38 @@ router.get("/country/:country", async function (req, res) {
   }
 });
 
-router.post("/newSong", function (req, res) {
+router.post("/newSong", async function (req, res) {
   // this needs a call to the db
   const url = req.body.url;
   const country = req.body.country;
   const desc = req.body.desc;
-  console.log("url:", url, "country:", country, "description:", desc);
+  const genre = req.body.desc;
+  // console.log(
+  //   "url:",
+  //   url,
+  //   "country:",
+  //   country,
+  //   "description:",
+  //   desc,
+  //   "genre:",
+  //   genre
+  // );
 
-  res.send({ added: true });
+  const song = {
+    url: url.slice(-11),
+    country: country,
+    description: desc,
+    genre: genre,
+    user: null,
+    date: Date.now().toString(),
+  };
+  let dbRes;
+  try {
+    dbRes = await myDB.addSong(song);
+  } catch (e) {
+    console.log("Error", e);
+    res.send({ result: dbRes });
+  }
 });
 
 module.exports = router;
