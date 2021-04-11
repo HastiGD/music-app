@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Image } from "react-native";
 import VideoComponent from "../components/VideoComponent.js";
 import SongInfoComponent from "../components/SongInfoComponent.js";
 import "../MainPage.css";
 
 export default function MainPage({ country }) {
   let [src, setSrc] = useState("");
-  let [songInfo, setSongInfo] = useState({});
+  let [songInfo, setSongInfo] = useState({
+    user: "",
+    date: Date.now().toString(),
+    desc: "",
+    genres: [],
+  });
 
   // Capitalizes the first letter of the country name
   function capCountry(country) {
@@ -28,7 +34,7 @@ export default function MainPage({ country }) {
         user: song.user,
         date: song.date,
         desc: song.description,
-        genre: song.genre,
+        genres: song.genre.split(" "),
       });
     };
     console.log("Searching for videos from", country);
@@ -41,15 +47,19 @@ export default function MainPage({ country }) {
       <h1 className="display-6">
         Check out this song from {capCountry(country)}
       </h1>
-      <span>
-        <VideoComponent src={src}></VideoComponent>
-        <SongInfoComponent
-          user={songInfo.user}
-          date={songInfo.date}
-          desc={songInfo.desc}
-          genre={songInfo.genre}
-        ></SongInfoComponent>
-      </span>
+      <div className="row row align-items-center videoRow">
+        <div className="col">
+          <VideoComponent src={src}></VideoComponent>
+        </div>
+        <div className="col">
+          <SongInfoComponent
+            user={songInfo.user}
+            date={songInfo.date}
+            desc={songInfo.desc}
+            genres={songInfo.genres}
+          ></SongInfoComponent>
+        </div>
+      </div>
 
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, enim

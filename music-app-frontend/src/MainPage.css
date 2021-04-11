@@ -1,1 +1,5 @@
-
+.videoRow {
+  display: inline-flex;
+  justify-content: space-around;
+  vertical-align: center;
+}
