@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import VideoComponent from "../components/VideoComponent.js";
+import SongInfoComponent from "../components/SongInfoComponent.js";
 import "../MainPage.css";
 
 export default function MainPage({ country }) {
   let [src, setSrc] = useState("");
+  let [songInfo, setSongInfo] = useState({});
 
   // Capitalizes the first letter of the country name
   function capCountry(country) {
@@ -19,8 +21,15 @@ export default function MainPage({ country }) {
     const fetchVideo = async () => {
       const resRaw = await fetch(`/country/${country}`);
       const res = await resRaw.json();
-      console.log("Got songs", res.songs[0].url);
-      setSrc("https://www.youtube.com/embed/" + res.songs[0].url);
+      const song = res.songs[0];
+      console.log("Got songs", song.url);
+      setSrc("https://www.youtube.com/embed/" + song.url);
+      setSongInfo({
+        user: song.user,
+        date: song.date,
+        desc: song.description,
+        genre: song.genre,
+      });
     };
     console.log("Searching for videos from", country);
     fetchVideo();
@@ -32,7 +41,16 @@ export default function MainPage({ country }) {
       <h1 className="display-6">
         Check out this song from {capCountry(country)}
       </h1>
-      <VideoComponent src={src}></VideoComponent>
+      <span>
+        <VideoComponent src={src}></VideoComponent>
+        <SongInfoComponent
+          user={songInfo.user}
+          date={songInfo.date}
+          desc={songInfo.desc}
+          genre={songInfo.genre}
+        ></SongInfoComponent>
+      </span>
+
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, enim
         fuga possimus, eos aliquid odit obcaecati, quod nisi blanditiis maxime
