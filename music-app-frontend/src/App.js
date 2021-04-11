@@ -20,7 +20,7 @@ function App() {
   };
 
   // Returns random country from list
-  const countries = ["united states", "colombia", "iran", "china"];
+  const countries = ["united states", "australia", "colombia", "iran"];
   const randomCountry = countries[Math.floor(Math.random() * countries.length)];
 
   let [country, setCountry] = useState(randomCountry);

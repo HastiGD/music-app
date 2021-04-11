@@ -9,7 +9,6 @@ export default function AddMusicPage() {
   let [country, setCountry] = useState(undefined);
   let [desc, setDesc] = useState(undefined);
   let [showAlert, setShowAlert] = useState([false, "", ""]);
-  //let [reload, setReload] = useState(0);
 
   // RegExp copied from https://stackoverflow.com/a/28735569/13894374
   function validateUrl(value) {
@@ -55,7 +54,7 @@ export default function AddMusicPage() {
         validateUrl(evt.target.value);
         break;
       case "country":
-        setCountry(evt.target.value);
+        setCountry(evt.target.value.toLowerCase());
         break;
       case "desc":
         setDesc(evt.target.value);
