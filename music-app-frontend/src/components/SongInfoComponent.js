@@ -1,4 +1,5 @@
 import "../SongInfo.css";
+import React from "react";
 
 export default function SongInfoComponent({ user, date, desc, genres }) {
   const postDate = (date) => {

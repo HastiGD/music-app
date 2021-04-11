@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Image } from "react-native";
 import VideoComponent from "../components/VideoComponent.js";
 import SongInfoComponent from "../components/SongInfoComponent.js";
 import "../MainPage.css";
