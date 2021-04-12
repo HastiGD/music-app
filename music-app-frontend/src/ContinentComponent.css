@@ -1,0 +1,13 @@
+.continentDiv {
+  column-width: 300px;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}

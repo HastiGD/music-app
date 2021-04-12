@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage.js";
 import AddMusicPage from "./pages/AddMusicPage.js";
 import CountriesPage from "./pages/CountriesPage.js";
+import DiscoverPage from "./pages/DiscoverPage.js";
 import SideBarComponent from "./components/SideBarComponent.js";
 import NavBarComponent from "./components/NavBarComponent.js";
 import "./App.css";
@@ -51,6 +52,9 @@ function App() {
 
       <div id="main">
         <Switch>
+          <Route path="/discover">
+            <DiscoverPage />
+          </Route>
           <Route path="/countries">
             <CountriesPage />
           </Route>
