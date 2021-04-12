@@ -3,13 +3,21 @@ import AddMusicFormComponent from "../components/AddMusicFormComponent.js";
 import "../AddMusicPage.css";
 
 export default function AddMusicPage() {
-  const Countries = require("../Countries.json").Countries;
-
+  const Countries = require("../Continents.json").Countries;
   let [url, setUrl] = useState(undefined);
   let [country, setCountry] = useState(undefined);
   let [desc, setDesc] = useState(undefined);
   let [genre, setGenre] = useState(undefined);
   let [showAlert, setShowAlert] = useState([false, "", ""]);
+
+  const countriesArr = (countriesObj) => {
+    let i;
+    let names = [];
+    for (i = 0; i < countriesObj.length; i++) {
+      names.push(countriesObj[i].name);
+    }
+    return names;
+  };
 
   // RegExp copied from https://stackoverflow.com/a/28735569/13894374
   function validateUrl(value) {
@@ -111,7 +119,7 @@ export default function AddMusicPage() {
         </p>
       </div>
       <AddMusicFormComponent
-        countriesArray={Countries}
+        countriesArray={countriesArr(Countries)}
         onChange={onChangeHandler}
         onBlur={onBlurHandler}
         onSubmit={validateForm}
