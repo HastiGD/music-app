@@ -3,26 +3,6 @@ import ContinentComponent from "../components/ContinentComponent.js";
 import "../CountriesPage.css";
 
 export default function CountriesPage() {
-  // async function postInputs(input) {
-  //   try {
-  //     const reqOptions = {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         countries: input,
-  //       }),
-  //     };
-  //     const resRaw = await fetch("/addCountries", reqOptions);
-  //     const res = await resRaw.json();
-  //     console.log("res", res);
-  //     console.log("Added countries", res);
-  //   } catch (e) {
-  //     console.log("Error", e);
-  //   }
-  // }
   const renderContinentComponent = (continent) => {
     return (
       <div>
