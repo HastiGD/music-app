@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage.js";
 import AddMusicPage from "./pages/AddMusicPage.js";
+import CountriesPage from "./pages/CountriesPage.js";
 import SideBarComponent from "./components/SideBarComponent.js";
 import NavBarComponent from "./components/NavBarComponent.js";
 import "./App.css";
@@ -50,10 +51,12 @@ function App() {
 
       <div id="main">
         <Switch>
+          <Route path="/countries">
+            <CountriesPage />
+          </Route>
           <Route path="/add">
             <AddMusicPage />
           </Route>
-
           <Route path="/">
             <MainPage country={country} />
           </Route>

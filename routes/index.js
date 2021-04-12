@@ -33,9 +33,9 @@ router.post("/newSong", async function (req, res) {
   let dbRes;
   try {
     dbRes = await myDB.addSong(song);
+    res.send({ result: dbRes });
   } catch (e) {
     console.log("Error", e);
-    res.send({ result: dbRes });
   }
 });
 

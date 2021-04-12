@@ -49,6 +49,18 @@ export default function SideBarComponent() {
           </Link>
         </i>
       </li>
+      <li>
+        <i className="bi bi-geo-alt">
+          <Link
+            className={
+              "nav-link" + (location.pathname === "/countries" ? " active" : "")
+            }
+            to="/countries"
+          >
+            <span className="fw-light">Countries</span>
+          </Link>
+        </i>
+      </li>
     </ul>
   );
 }
