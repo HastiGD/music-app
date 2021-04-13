@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Redirect } from "react-router-dom";
 import VideoComponent from "../components/VideoComponent.js";
 import DiscoverSongInfoComponent from "../components/DiscoverSongInfoComponent.js";
 import CountryInfoComponent from "../components/CountryInfoComponent.js";
@@ -8,6 +8,7 @@ export default function DiscoverPage() {
   const { state } = useLocation();
   let [country] = useState(state.country);
   let [countryInfo, setCountryInfo] = useState({});
+  let [toError, setToError] = useState(false);
   let [songs, setSongs] = useState([]);
   let [index, setIndex] = useState(0);
   let [src, setSrc] = useState("");
@@ -31,14 +32,19 @@ export default function DiscoverPage() {
     const fetchVideo = async () => {
       const resRaw = await fetch(`/country/${country.toLowerCase()}`);
       const res = await resRaw.json();
-      setSongs(res.songs);
-      setSrc(res.songs[index].url);
-      setSongInfo({
-        user: res.songs[index].user,
-        date: res.songs[index].date,
-        desc: res.songs[index].description,
-        genres: res.songs[index].genre.split(" "),
-      });
+      console.log("RES", res.songs.length);
+      if (res.songs.length === 0) {
+        setToError(true);
+      } else {
+        setSongs(res.songs);
+        setSrc(res.songs[index].url);
+        setSongInfo({
+          user: res.songs[index].user,
+          date: res.songs[index].date,
+          desc: res.songs[index].description,
+          genres: res.songs[index].genre.split(" "),
+        });
+      }
     };
     fetchVideo();
   }, [index]);
@@ -65,6 +71,7 @@ export default function DiscoverPage() {
 
   return (
     <div>
+      {toError ? <Redirect to="/error" /> : null}
       <h1 className="display-6 fs-2">
         Here's what people are listening to in {country}
       </h1>

@@ -1,11 +1,12 @@
 const { MongoClient } = require("mongodb");
 
-// // Imports DB admin credentials and connects to MongoDB Atlas (Comment out if deploying to Heroku or serving MongoDB locally)
-// const dotenv = require("dotenv");
-// dotenv.config();
-// const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.ux7qi.mongodb.net/musicdb?retryWrites=true&w=majority`;
+// Imports DB admin credentials and connects to MongoDB Atlas (Comment out if deploying to Heroku or serving MongoDB locally)
+const dotenv = require("dotenv");
+dotenv.config();
 
-const url = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const url =
+  process.env.MONGODB_URI ||
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.ux7qi.mongodb.net/musicdb?retryWrites=true&w=majority`;
 
 function myDB() {
   const mydb = {};

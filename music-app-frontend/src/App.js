@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage.js";
 import AddMusicPage from "./pages/AddMusicPage.js";
 import CountriesPage from "./pages/CountriesPage.js";
 import DiscoverPage from "./pages/DiscoverPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
 import SideBarComponent from "./components/SideBarComponent.js";
 import NavBarComponent from "./components/NavBarComponent.js";
 import "./App.css";
@@ -22,7 +23,13 @@ function App() {
   };
 
   // Returns random country from list
-  const countries = ["united states", "australia", "colombia", "iran"];
+  const countries = [
+    "united states",
+    "australia",
+    "colombia",
+    "iran",
+    "dominican republic",
+  ];
   const randomCountry = countries[Math.floor(Math.random() * countries.length)];
 
   let [country, setCountry] = useState(randomCountry);
@@ -52,6 +59,9 @@ function App() {
 
       <div id="main">
         <Switch>
+          <Route path="/error">
+            <ErrorPage />
+          </Route>
           <Route path="/discover">
             <DiscoverPage />
           </Route>
