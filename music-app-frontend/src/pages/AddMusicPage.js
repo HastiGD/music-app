@@ -103,7 +103,11 @@ export default function AddMusicPage() {
   }
 
   function onErrorCloseHandler() {
-    window.location.reload(false);
+    setShowAlert([false, "", ""]);
+    setUrl(undefined);
+    setCountry(undefined);
+    setDesc(undefined);
+    setGenre(undefined);
   }
 
   return (
