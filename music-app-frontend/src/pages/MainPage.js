@@ -59,11 +59,12 @@ export default function MainPage({ country }) {
       </div>
       <br />
       <br />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, enim
-        fuga possimus, eos aliquid odit obcaecati, quod nisi blanditiis maxime
-        recusandae voluptatibus. Odit sapiente ducimus voluptas natus aliquam
-        iusto nemo. Yeeee!
+      <p className="fw-light">
+        There is beautiful music from all over the world to be discovered! Check
+        out the featured video above to listen to something new. Want to add
+        some music from your country? Use the Add Music button to share
+        something music only locals would hear. Or visit the countries page to
+        discover music from countries you've never been to.
       </p>
     </div>
   );
