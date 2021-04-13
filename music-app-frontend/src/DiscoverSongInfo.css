@@ -1,9 +1,10 @@
-.cardSongInfo {
+.cardDiscoverSongInfo {
   background-color: #3c415c;
-  height: 315px;
-  width: 18rem;
+  height: auto;
+  width: 560px;
   padding: 10px;
 }
+
 .badge {
   margin-right: 2%;
   background-color: #b4a5a5;

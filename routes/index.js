@@ -5,11 +5,22 @@ const myDB = require("../database/db.js");
 /* GET song from country */
 router.get("/country/:country", async function (req, res) {
   console.log("in router GET /country");
-  const country = req.params.country || "Couldn't get country from front";
+  const country = req.params.country || "";
   console.log("Getting songs from", country);
   try {
     const songs = await myDB.getSongs(country);
     res.send({ songs: songs });
+  } catch (e) {
+    console.log("Error", e);
+  }
+});
+
+router.get("/discover/:country", async function (req, res) {
+  const country = req.params.country || "";
+  try {
+    const cap = await myDB.getCapital(country);
+    const langs = await myDB.getLangs(country);
+    res.send({ cap: cap, langs: langs });
   } catch (e) {
     console.log("Error", e);
   }
@@ -20,7 +31,7 @@ router.post("/newSong", async function (req, res) {
   const url = req.body.url;
   const country = req.body.country;
   const desc = req.body.desc;
-  const genre = req.body.desc;
+  const genre = req.body.genre;
 
   const song = {
     url: url.slice(-11),

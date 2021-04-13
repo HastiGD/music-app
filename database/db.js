@@ -66,6 +66,60 @@ function myDB() {
     }
   };
 
+  mydb.getCapital = async (country) => {
+    console.log("In mydb.getCapital");
+    let client;
+    try {
+      // Connect to db
+      client = new MongoClient(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log("Connecting to db: ", DB_NAME);
+      await client.connect();
+      console.log("Connected!");
+      // Connect to collection
+      const db = client.db(DB_NAME);
+      const capCol = db.collection("countryinfo");
+      // Insert in collection
+      const res = await capCol.find({ country }).toArray();
+      return res;
+    } catch (e) {
+      console.log(e);
+    } finally {
+      // Disconnect from db
+      console.log("Closing connection");
+      client.close();
+    }
+  };
+
+  mydb.getLangs = async (country) => {
+    console.log("In mydb.getLangs");
+    let client;
+    try {
+      // Connect to db
+      client = new MongoClient(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log("Connecting to db: ", DB_NAME);
+      await client.connect();
+      console.log("Connected!");
+      // Connect to collection
+      const db = client.db(DB_NAME);
+      const langCol = db.collection("countryLanguages");
+      // Insert in collection
+      const res = await langCol.find({ country }).toArray();
+      return res;
+    } catch (e) {
+      console.log(e);
+    } finally {
+      // Disconnect from db
+      console.log("Closing connection");
+      client.close();
+    }
+  };
+
   return mydb;
 }
 module.exports = myDB();

@@ -46,6 +46,7 @@ export default function MainPage({ country }) {
       <h1 className="display-6">
         Check out this song from {capCountry(country)}
       </h1>
+      <br />
       <div className="row row align-items-center videoRow">
         <div className="col">
           <VideoComponent src={src}></VideoComponent>
@@ -59,7 +60,8 @@ export default function MainPage({ country }) {
           ></SongInfoComponent>
         </div>
       </div>
-
+      <br />
+      <br />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, enim
         fuga possimus, eos aliquid odit obcaecati, quod nisi blanditiis maxime

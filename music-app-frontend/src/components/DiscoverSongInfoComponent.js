@@ -1,7 +1,12 @@
-import "../SongInfo.css";
+import "../DiscoverSongInfo.css";
 import React from "react";
 
-export default function SongInfoComponent({ user, date, desc, genres }) {
+export default function DiscoverSongInfoComponent({
+  user,
+  date,
+  desc,
+  genres,
+}) {
   const postDate = (date) => {
     const postDate = new Date(parseInt(date, 10));
 
@@ -15,7 +20,7 @@ export default function SongInfoComponent({ user, date, desc, genres }) {
   console.log("Rendering SongInfoComponent");
   return (
     <div>
-      <div className="card cardSongInfo">
+      <div className="card cardDiscoverSongInfo">
         <div className="card-body p-0">
           <h5 className="card-title fw-light">
             <span>

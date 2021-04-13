@@ -42,7 +42,7 @@ export default function AddMusicFormComponent({
             className="form-control bg-dark text-light border-secondary"
             placeholder="url"
             onChange={onChange}
-            onBlur={(evt) => onBlur(evt, "url")}
+            onBlur={(evt) => onBlur(evt.target.value, "url")}
           />
         </div>
         <div className="form-group">
@@ -50,7 +50,7 @@ export default function AddMusicFormComponent({
           <select
             className="form-control bg-dark text-light border-secondary"
             defaultValue={"DEFAULT"}
-            onBlur={(evt) => onBlur(evt, "country")}
+            onBlur={(evt) => onBlur(evt.target.value, "country")}
           >
             <option value="DEFAULT" disabled>
               Select country
@@ -66,7 +66,10 @@ export default function AddMusicFormComponent({
             type="text"
             className="form-control bg-dark text-light border-secondary"
             placeholder="genre"
-            onBlur={(evt) => onBlur(evt, "genre")}
+            onBlur={(event) => {
+              console.log("Sending genre", event.target.value);
+              onBlur(event.target.value, "genre");
+            }}
           />
         </div>
         <div className="form-group">
@@ -77,7 +80,7 @@ export default function AddMusicFormComponent({
             className="form-control bg-dark text-light border-secondary"
             rows="3"
             onChange={onChange}
-            onBlur={(evt) => onBlur(evt, "desc")}
+            onBlur={(evt) => onBlur(evt.target.value, "desc")}
           ></textarea>
         </div>
         <div className="form-group">

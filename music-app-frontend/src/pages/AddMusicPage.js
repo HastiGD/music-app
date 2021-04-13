@@ -39,6 +39,7 @@ export default function AddMusicPage() {
           if (showAlert[0]) {
             setShowAlert([false, "", ""]);
           }
+          console.log("Ready to post genre", genre);
           postInputs();
         } else {
           setShowAlert([true, "danger", "Missing URL"]);
@@ -60,16 +61,16 @@ export default function AddMusicPage() {
   function onBlurHandler(evt, caller) {
     switch (caller) {
       case "url":
-        validateUrl(evt.target.value);
+        validateUrl(evt);
         break;
       case "country":
-        setCountry(evt.target.value.toLowerCase());
+        setCountry(evt.toLowerCase());
         break;
       case "desc":
-        setDesc(evt.target.value);
+        setDesc(evt);
         break;
       case "genre":
-        setGenre(evt.target.value);
+        setGenre(evt.toLowerCase());
         break;
       default:
         break;
@@ -77,6 +78,7 @@ export default function AddMusicPage() {
   }
 
   async function postInputs() {
+    console.log("About to post genre", genre);
     try {
       const reqOptions = {
         method: "POST",
@@ -89,11 +91,12 @@ export default function AddMusicPage() {
           country: country,
           desc: desc,
           genre: genre,
+          user: null,
+          date: Date.now().toString(),
         }),
       };
       const resRaw = await fetch("/newSong", reqOptions);
       const res = await resRaw.json();
-      console.log("res", res);
       console.log("Added newSong", res);
       setShowAlert([true, "success", "Song added!"]);
     } catch (e) {
