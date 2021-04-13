@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 function NavBarComponent({ onHamburgerClick, onSearch }) {
   let query = "";
 
-  console.log("Rendering NavBar");
   return (
     <nav
       className="navbar navbar-expand-xxl navbar-dark"

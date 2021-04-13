@@ -9,15 +9,12 @@ export default function DiscoverSongInfoComponent({
 }) {
   const postDate = (date) => {
     const postDate = new Date(parseInt(date, 10));
-
     return postDate.toLocaleString("default", {
       month: "short",
       day: "numeric",
       year: "numeric",
     });
   };
-
-  console.log("Rendering SongInfoComponent");
   return (
     <div>
       <div className="card cardDiscoverSongInfo">

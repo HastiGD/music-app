@@ -4,9 +4,8 @@ const myDB = require("../database/db.js");
 
 /* GET song from country */
 router.get("/country/:country", async function (req, res) {
-  console.log("in router GET /country");
   const country = req.params.country || "";
-  console.log("Getting songs from", country);
+
   try {
     const songs = await myDB.getSongs(country);
     res.send({ songs: songs });

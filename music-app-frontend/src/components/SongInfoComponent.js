@@ -11,8 +11,6 @@ export default function SongInfoComponent({ user, date, desc, genres }) {
       year: "numeric",
     });
   };
-
-  console.log("Rendering SongInfoComponent");
   return (
     <div>
       <div className="card cardSongInfo">

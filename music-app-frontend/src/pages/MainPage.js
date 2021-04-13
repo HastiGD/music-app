@@ -27,7 +27,6 @@ export default function MainPage({ country }) {
       const resRaw = await fetch(`/country/${country}`);
       const res = await resRaw.json();
       const song = res.songs[0];
-      console.log("Got songs", song.url);
       setSrc("https://www.youtube.com/embed/" + song.url);
       setSongInfo({
         user: song.user,
@@ -36,11 +35,9 @@ export default function MainPage({ country }) {
         genres: song.genre.split(" "),
       });
     };
-    console.log("Searching for videos from", country);
     fetchVideo();
   }, [country]);
 
-  console.log("Rendering MainPage");
   return (
     <div>
       <h1 className="display-6">

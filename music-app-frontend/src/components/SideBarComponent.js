@@ -3,24 +3,6 @@ import "../SideBar.css";
 
 export default function SideBarComponent() {
   const location = useLocation();
-  console.log("Location", location);
-  // // Links and Icons in SideNav
-  // const pages = ["Home", "Countries", "Genres", "Add music", "Favorites"];
-  // const pathnames = ["/", "/countries", "/genres", "/add", "/favorites"];
-  // const icons = [
-  //   "bi bi-house-fill",
-  //   "bi bi-geo-alt",
-  //   "bi bi-music-note-list",
-  //   "bi bi-plus-circle",
-  //   "bi bi-star",
-  // ];
-
-  // // Renders links in SideNav
-  // const renderLinks = () => {
-  //   return links.map((link, i) => (
-  //     <SideBarComponent key={"Link" + i} icon={icons[i]} page={link} />
-  //   ));
-  // };
 
   return (
     <ul>

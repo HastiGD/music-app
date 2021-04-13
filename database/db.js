@@ -10,7 +10,6 @@ function myDB() {
   const DB_NAME = "musicdb";
 
   mydb.getSongs = async (query) => {
-    console.log("In mydb.getUrl");
     let client;
     try {
       // Connect to db
@@ -18,28 +17,22 @@ function myDB() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log("Connecting to db: ", DB_NAME);
       await client.connect();
-      console.log("Connected!");
       // Connect to collection
       const db = client.db(DB_NAME);
       const songsCol = db.collection("songs");
-      console.log("Collection ready, querying with ", query);
       // Query collection
       const songs = await songsCol.find({ country: query }).toArray();
-      console.log("Got songs", songs);
       return songs;
     } catch (e) {
       console.log(e);
     } finally {
       // Disconnect from db
-      console.log("Closing connection");
       client.close();
     }
   };
 
   mydb.addSong = async (song) => {
-    console.log("In mydb.addSong");
     let client;
     try {
       // Connect to db
@@ -47,13 +40,10 @@ function myDB() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log("Connecting to db: ", DB_NAME);
       await client.connect();
-      console.log("Connected!");
       // Connect to collection
       const db = client.db(DB_NAME);
       const songsCol = db.collection("songs");
-      console.log("Ready to insert", song);
       // Insert in collection
       const res = await songsCol.insertOne(song);
       return res;
@@ -61,13 +51,11 @@ function myDB() {
       console.log(e);
     } finally {
       // Disconnect from db
-      console.log("Closing connection");
       client.close();
     }
   };
 
   mydb.getCapital = async (country) => {
-    console.log("In mydb.getCapital");
     let client;
     try {
       // Connect to db
@@ -75,9 +63,7 @@ function myDB() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log("Connecting to db: ", DB_NAME);
       await client.connect();
-      console.log("Connected!");
       // Connect to collection
       const db = client.db(DB_NAME);
       const capCol = db.collection("countryinfo");
@@ -88,13 +74,11 @@ function myDB() {
       console.log(e);
     } finally {
       // Disconnect from db
-      console.log("Closing connection");
       client.close();
     }
   };
 
   mydb.getLangs = async (country) => {
-    console.log("In mydb.getLangs");
     let client;
     try {
       // Connect to db
@@ -102,9 +86,7 @@ function myDB() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log("Connecting to db: ", DB_NAME);
       await client.connect();
-      console.log("Connected!");
       // Connect to collection
       const db = client.db(DB_NAME);
       const langCol = db.collection("countryLanguages");
@@ -115,11 +97,9 @@ function myDB() {
       console.log(e);
     } finally {
       // Disconnect from db
-      console.log("Closing connection");
       client.close();
     }
   };
-
   return mydb;
 }
 module.exports = myDB();

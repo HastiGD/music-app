@@ -6,7 +6,6 @@ export default function ContinentComponent({ continent }) {
   const Countries = require("../Continents.json").Countries;
   const Continents = require("../CountriesGrouped.json").Continents;
   const location = useLocation();
-  console.log("Location", location);
 
   const renderCountries = (countryCodesArray) => {
     let i;

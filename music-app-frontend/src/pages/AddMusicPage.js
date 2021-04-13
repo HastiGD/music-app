@@ -39,7 +39,6 @@ export default function AddMusicPage() {
           if (showAlert[0]) {
             setShowAlert([false, "", ""]);
           }
-          console.log("Ready to post genre", genre);
           postInputs();
         } else {
           setShowAlert([true, "danger", "Missing URL"]);
@@ -78,7 +77,6 @@ export default function AddMusicPage() {
   }
 
   async function postInputs() {
-    console.log("About to post genre", genre);
     try {
       const reqOptions = {
         method: "POST",
@@ -105,11 +103,9 @@ export default function AddMusicPage() {
   }
 
   function onErrorCloseHandler() {
-    console.log("Refreshing page");
     window.location.reload(false);
   }
 
-  console.log("Rendering AddMusicPage");
   return (
     <div>
       <div className="formInfo">

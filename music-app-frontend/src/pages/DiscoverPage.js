@@ -22,10 +22,8 @@ export default function DiscoverPage() {
     const fetchCountryInfo = async () => {
       const resRaw = await fetch(`/discover/${country}`);
       const res = await resRaw.json();
-      console.log("Got res", res);
       setCountryInfo(res);
     };
-    console.log("Searching info for", country);
     fetchCountryInfo();
   }, [country]);
 
@@ -33,9 +31,7 @@ export default function DiscoverPage() {
     const fetchVideo = async () => {
       const resRaw = await fetch(`/country/${country.toLowerCase()}`);
       const res = await resRaw.json();
-      console.log("Got songs", res.songs, typeof res.songs);
       setSongs(res.songs);
-      console.log("Got src", res.songs[index].url);
       setSrc(res.songs[index].url);
       setSongInfo({
         user: res.songs[index].user,
@@ -44,12 +40,10 @@ export default function DiscoverPage() {
         genres: res.songs[index].genre.split(" "),
       });
     };
-    console.log("Searching for videos from", country);
     fetchVideo();
   }, [index]);
 
   function renderVideo(source) {
-    console.log(source);
     return (
       <VideoComponent
         src={"https://www.youtube.com/embed/" + source}

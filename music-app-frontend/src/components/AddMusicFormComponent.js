@@ -24,7 +24,6 @@ export default function AddMusicFormComponent({
   errorMessage,
   onErrorClose,
 }) {
-  console.log("Rendering AddMusicFormComponent");
   return (
     <div>
       {error ? (
@@ -67,7 +66,6 @@ export default function AddMusicFormComponent({
             className="form-control bg-dark text-light border-secondary"
             placeholder="genre"
             onBlur={(event) => {
-              console.log("Sending genre", event.target.value);
               onBlur(event.target.value, "genre");
             }}
           />
