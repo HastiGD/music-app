@@ -1,6 +1,6 @@
 import React from "react";
 
-function createAlert(type, message, onClick) {
+function createAlert(type, message) {
   if (type === "danger") {
     return (
       <div
@@ -14,22 +14,16 @@ function createAlert(type, message, onClick) {
   } else if (type === "success") {
     return (
       <div
-        className="alert alert-success alert-dismissible"
+        className="alert alert-success"
         role="alert"
         style={{ width: "50%" }}
       >
         {message}
-        <button
-          type="button"
-          className="btn-close"
-          aria-label="Close"
-          onClick={onClick}
-        ></button>
       </div>
     );
   }
 }
 
-export default function AlertComponent({ type, message, onClick }) {
-  return <div>{createAlert(type, message, onClick)}</div>;
+export default function AlertComponent({ type, message }) {
+  return <div>{createAlert(type, message)}</div>;
 }

@@ -22,7 +22,6 @@ export default function AddMusicFormComponent({
   error,
   errorType,
   errorMessage,
-  onErrorClose,
 }) {
   return (
     <div>
@@ -30,7 +29,6 @@ export default function AddMusicFormComponent({
         <AlertComponent
           type={errorType}
           message={errorMessage}
-          onClick={onErrorClose}
         ></AlertComponent>
       ) : null}
       <form className="addMusicForm">

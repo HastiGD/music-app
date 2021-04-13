@@ -102,13 +102,13 @@ export default function AddMusicPage() {
     }
   }
 
-  function onErrorCloseHandler() {
-    setShowAlert([false, "", ""]);
-    setUrl(undefined);
-    setCountry(undefined);
-    setDesc(undefined);
-    setGenre(undefined);
-  }
+  // function onErrorCloseHandler() {
+  //   setShowAlert([false, "", ""]);
+  //   setUrl(undefined);
+  //   setCountry(undefined);
+  //   setDesc(undefined);
+  //   setGenre(undefined);
+  // }
 
   return (
     <div>
@@ -129,7 +129,6 @@ export default function AddMusicPage() {
         error={showAlert[0]}
         errorType={showAlert[1]}
         errorMessage={showAlert[2]}
-        onErrorClose={onErrorCloseHandler}
       />
     </div>
   );
