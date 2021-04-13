@@ -59,7 +59,7 @@ export default function MainPage({ country }) {
       </div>
       <br />
       <br />
-      <p className="fw-light">
+      <p className="fw-light lead">
         There is beautiful music from all over the world to be discovered! Check
         out the featured video above to listen to something new. Want to add
         some music from your country? Use the Add Music button to share
