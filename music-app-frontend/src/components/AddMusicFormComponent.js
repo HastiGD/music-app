@@ -11,7 +11,6 @@ AddMusicFormComponent.propTypes = {
   error: PropTypes.bool.isRequired,
   errorType: PropTypes.string,
   errorMessage: PropTypes.string.isRequired,
-  onErrorClose: PropTypes.func.isRequired,
 };
 
 export default function AddMusicFormComponent({
