@@ -2,11 +2,11 @@
 The World Music App makes it possible to share and discover music from around the world using YouTube.
 
 ### Documentation
-Google Slides : [](https://docs.google.com/presentation/d/1LFRa4Wk15TJAeetZc4D8mnSI1PPE-jkmmcWd-9-TAM0/edit?usp=sharing)
+Google Slides : [Slides](https://docs.google.com/presentation/d/1LFRa4Wk15TJAeetZc4D8mnSI1PPE-jkmmcWd-9-TAM0/edit?usp=sharing)
 
-Install Guide : [](https://docs.google.com/document/d/1oYipEzbihybUB9vg88tkf_krnlFICbIlSwDgpio2KH4/edit?usp=sharing)
+Install Guide : [Install](https://docs.google.com/document/d/1oYipEzbihybUB9vg88tkf_krnlFICbIlSwDgpio2KH4/edit?usp=sharing)
 
-Video Demo : [](https://youtu.be/symF91fhw4U)
+Video Demo : [Demo](https://youtu.be/symF91fhw4U)
 
 ### About
 This app was made by Hasti Gheibi Dehnashi for Web Development at Northeastern University.
