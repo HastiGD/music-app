@@ -3,7 +3,9 @@ The World Music App makes it possible to share and discover music from around th
 
 ### Documentation
 Google Slides : [](https://docs.google.com/presentation/d/1LFRa4Wk15TJAeetZc4D8mnSI1PPE-jkmmcWd-9-TAM0/edit?usp=sharing)
+
 Install Guide : [](https://docs.google.com/document/d/1oYipEzbihybUB9vg88tkf_krnlFICbIlSwDgpio2KH4/edit?usp=sharing)
+
 Video Demo : [](https://youtu.be/symF91fhw4U)
 
 ### About
@@ -15,5 +17,9 @@ The goal of this app was to allow people to share music from their home country 
 
 ### Features
 1. View the featured video on the main page, or search for a specific country
+![Homepage](https://github.com/HastiGD/music-app/blob/master/home.png)
 2. Add music for your country
+![Add Music Page](https://github.com/HastiGD/music-app/blob/master/addMusic.png)
 3. Discover music from around the world
+![Discover Page](https://github.com/HastiGD/music-app/blob/master/discover.png)
+![Country Page](https://github.com/HastiGD/music-app/blob/master/country.png)
