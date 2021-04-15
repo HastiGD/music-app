@@ -10,7 +10,8 @@ Video Demo : [Demo](https://youtu.be/symF91fhw4U)
 
 ### About
 This app was made by Hasti Gheibi Dehnashi for Web Development at Northeastern University.
-Class Website: [](https://johnguerra.co/classes/webDevelopment_spring_2021/)
+
+Class Website: [CS5610](https://johnguerra.co/classes/webDevelopment_spring_2021/)
 
 ### Objective
 The goal of this app was to allow people to share music from their home country which wouldn't otherwise be discoverable by tourists or non-natives. 
