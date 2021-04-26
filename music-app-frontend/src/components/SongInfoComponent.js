@@ -6,29 +6,29 @@ export default function SongInfoComponent({ user, date, desc, genres }) {
     const postDate = new Date(parseInt(date, 10));
 
     return postDate.toLocaleString("default", {
-      month: "short",
+      month: "numeric",
       day: "numeric",
-      year: "numeric",
+      year: "2-digit",
     });
   };
   return (
-    <div>
-      <div className="card cardSongInfo">
-        <div className="card-body p-0">
-          <h5 className="card-title fw-light">
-            <span>
-              <i className="bi bi-person-circle"></i>
-            </span>
-            {user}
-          </h5>
-          <h6 className="card-subtitle ml-2 fw-light">{postDate(date)}</h6>
-          <p className="card-text fw-light">"{desc}"</p>
-          {genres.map((genre, i) => (
-            <span key={"" + genre + i} className="badge rounded-pill fw-light">
-              {genre}
-            </span>
-          ))}
-        </div>
+    <div className="card cardSongInfo">
+      <div className="card-body p-0">
+        <figure>
+          <blockquote class="blockquote">
+            <p className="card-text fw-light">"{desc}"</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            <cite title="Source Title">
+              {user} &#183; {postDate(date)}
+            </cite>
+          </figcaption>
+        </figure>
+        {genres.map((genre, i) => (
+          <span key={"" + genre + i} className="badge rounded-pill fw-light">
+            {genre}
+          </span>
+        ))}
       </div>
     </div>
   );
