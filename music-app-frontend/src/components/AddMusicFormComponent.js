@@ -77,6 +77,7 @@ export default function AddMusicFormComponent({
             placeholder="I chose this video because..."
             aria-label="Input form for why user chose this video"
             rows="3"
+            maxlength="130"
             onChange={onChange}
             onBlur={(evt) => onBlur(evt.target.value, "desc")}
           ></textarea>

@@ -53,8 +53,8 @@ export default function MainPage({ country }) {
               to.
             </p>
             <div className="row align-items-end">
+              <h2>Check out this song from {capCountry(country)}</h2>
               <div className="col-md-auto">
-                <h2>Check out this song from {capCountry(country)}</h2>
                 <VideoComponent src={src}></VideoComponent>
               </div>
               <div className="col p-0 pb-2">
