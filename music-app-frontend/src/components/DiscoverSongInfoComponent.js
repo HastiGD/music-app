@@ -25,9 +25,7 @@ export default function DiscoverSongInfoComponent({
             </span>
             {user}
           </h5>
-          <h6 className="card-subtitle ml-2 text-muted fw-light">
-            {postDate(date)}
-          </h6>
+          <h6 className="card-subtitle ml-2 fw-light">{postDate(date)}</h6>
           <p className="card-text fw-light">"{desc}"</p>
           {genres.map((genre, i) => (
             <span key={"" + genre + i} className="badge rounded-pill fw-light">

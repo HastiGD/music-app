@@ -40,35 +40,52 @@ export default function MainPage({ country }) {
 
   return (
     <div>
-      <h1 className="display-6">
-        Check out this song from {capCountry(country)}
-      </h1>
-      <h2>Heading</h2>
-      <h3>Progression</h3>
-      <h4>Sample</h4>
-      <br />
-      <div className="row row align-items-center videoRow">
-        <div className="col">
-          <VideoComponent src={src}></VideoComponent>
+      <div className="container-fluid display-flex">
+        <div className="row justify-content-start">
+          <div className="col-md-9">
+            <h1>There is a world of music to discover</h1>
+            <p>
+              There is beautiful music from all over the world to be discovered!
+              Check out the featured video below to listen to something new.
+              Want to add some music from your country? Use the Add Music button
+              to share something music only locals would hear. Or visit the
+              countries page to discover music from countries you've never been
+              to.
+            </p>
+            <div className="row align-items-end">
+              <div className="col-md-auto">
+                <h2>Check out this song from {capCountry(country)}</h2>
+                <VideoComponent src={src}></VideoComponent>
+              </div>
+              <div className="col p-0 pb-2">
+                <SongInfoComponent
+                  user={songInfo.user}
+                  date={songInfo.date}
+                  desc={songInfo.desc}
+                  genres={songInfo.genres}
+                ></SongInfoComponent>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <h1>Folk music</h1>
+            <p>
+              Traditional music native to a region or culture. Many artists
+              around the world are keeping the music of their ancestors alive.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem perspiciatis laudantium quos totam aspernatur, amet
+              atque exercitationem consequuntur ullam saepe nam sequi eum
+              similique corporis! Assumenda, quo. Voluptas, ex, expedita.
+            </p>
+          </div>
         </div>
-        <div className="col">
-          <SongInfoComponent
-            user={songInfo.user}
-            date={songInfo.date}
-            desc={songInfo.desc}
-            genres={songInfo.genres}
-          ></SongInfoComponent>
+        <hr />
+        <div className="row">
+          <h2>Add music from your country</h2>
         </div>
       </div>
+
       <br />
-      <br />
-      <p className="fw-light lead">
-        There is beautiful music from all over the world to be discovered! Check
-        out the featured video above to listen to something new. Want to add
-        some music from your country? Use the Add Music button to share
-        something music only locals would hear. Or visit the countries page to
-        discover music from countries you've never been to.
-      </p>
     </div>
   );
 }
