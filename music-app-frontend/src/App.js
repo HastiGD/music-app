@@ -42,39 +42,41 @@ function App() {
   console.log("Rendering App");
   return (
     <Router>
-      <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
+      <div role="main">
+        <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
 
-      <div id="mySidenav" className="sidenav">
-        <button
-          type="button"
-          className="btn-close btn-close-white"
-          aria-label="Close"
-          onClick={closeNav}
-        />
-        <br />
-        <br />
-        <br />
-        <SideBarComponent />
-      </div>
+        <div id="mySidenav" className="sidenav" title="Side navbar">
+          <button
+            type="button"
+            className="btn-close btn-close-white"
+            aria-label="Close"
+            onClick={closeNav}
+          />
+          <br />
+          <br />
+          <br />
+          <SideBarComponent />
+        </div>
 
-      <div id="main">
-        <Switch>
-          <Route path="/error">
-            <ErrorPage />
-          </Route>
-          <Route path="/discover">
-            <DiscoverPage />
-          </Route>
-          <Route path="/countries">
-            <CountriesPage />
-          </Route>
-          <Route path="/add">
-            <AddMusicPage />
-          </Route>
-          <Route path="/">
-            <MainPage country={country} />
-          </Route>
-        </Switch>
+        <div id="main">
+          <Switch>
+            <Route path="/error">
+              <ErrorPage />
+            </Route>
+            <Route path="/discover">
+              <DiscoverPage />
+            </Route>
+            <Route path="/countries">
+              <CountriesPage />
+            </Route>
+            <Route path="/add">
+              <AddMusicPage />
+            </Route>
+            <Route path="/">
+              <MainPage country={country} />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   );

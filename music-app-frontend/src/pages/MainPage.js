@@ -43,6 +43,9 @@ export default function MainPage({ country }) {
       <h1 className="display-6">
         Check out this song from {capCountry(country)}
       </h1>
+      <h2>Heading</h2>
+      <h3>Progression</h3>
+      <h4>Sample</h4>
       <br />
       <div className="row row align-items-center videoRow">
         <div className="col">

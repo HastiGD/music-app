@@ -76,6 +76,9 @@ export default function DiscoverPage() {
         Here's what people are listening to in {country}
       </h1>
       <br />
+      <h2>A</h2>
+      <h3>Heading</h3>
+      <h4>Progression</h4>
       <div>
         <CountryInfoComponent country={country} countryInfo={countryInfo} />
       </div>

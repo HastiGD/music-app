@@ -45,6 +45,7 @@ export default function AddMusicFormComponent({
           <label className="text-light fw-light">Country</label>
           <select
             className="form-control bg-dark text-light border-secondary"
+            aria-label="Drop down menu for selecting country"
             defaultValue={"DEFAULT"}
             onBlur={(evt) => onBlur(evt.target.value, "country")}
           >
@@ -73,6 +74,8 @@ export default function AddMusicFormComponent({
           </label>
           <textarea
             className="form-control bg-dark text-light border-secondary"
+            placeholder="I chose this video because..."
+            aria-label="Input form for why user chose this video"
             rows="3"
             onChange={onChange}
             onBlur={(evt) => onBlur(evt.target.value, "desc")}
