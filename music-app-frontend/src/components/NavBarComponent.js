@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
+import { useRoutes } from "hookrouter";
 
 function NavBarComponent({ onHamburgerClick, onSearch }) {
   let query = "";
+  let location = useLocation();
+  const routes = useRoutes();
+
+  console.log("Location ", location);
 
   return (
     <nav
@@ -27,7 +33,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
         <form
           className="d-flex"
           onSubmit={(evt) => {
-            evt.preventDefault();
+            //evt.preventDefault();
           }}
         >
           <div className="input-group m-1 text-center">
@@ -46,7 +52,11 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
               }}
               onKeyPress={(evt) => {
                 if (evt.code === "Enter") {
-                  onSearch(query);
+                  if (location.pathname === "/") {
+                    onSearch(query);
+                  } else {
+                    routes.navigate("/", true);
+                  }
                 }
               }}
             />
@@ -55,8 +65,12 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
               type="button"
               aria-label="search button"
               onClick={(evt) => {
-                evt.preventDefault();
-                onSearch(query);
+                //evt.preventDefault();
+                if (location.pathname === "/") {
+                  onSearch(query);
+                } else {
+                  routes.navigate("/", true);
+                }
               }}
             >
               <span className="visually-hidden">

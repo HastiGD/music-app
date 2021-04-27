@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -44,25 +44,27 @@ function App() {
 
   // Callback function for searching in NavBarComponent
   function handleSearch(searchQuery) {
+    console.log("in onSearch");
     if (countries.includes(searchQuery)) {
       setCountry(searchQuery);
     } else {
-      // redirect here
       console.log("No video for this country");
       setToError(true);
     }
   }
 
+  // Handles errors when resources for a specific country are not found
   function handleError() {
     setToError(true);
   }
 
+  // Redirects errors to home
   function handleRedirect() {
     console.log("inredirect");
     setToError(false);
   }
 
-  console.log("Rendering App toError ", toError);
+  console.log("Rendering App toError ");
   return (
     <Router>
       <div role="main">
@@ -79,7 +81,6 @@ function App() {
           <br />
           <SideBarComponent />
         </div>
-
         <div id="main">
           <Switch>
             <Route path="/error">
