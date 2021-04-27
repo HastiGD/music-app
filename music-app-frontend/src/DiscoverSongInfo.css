@@ -1,19 +1,6 @@
 .cardDiscoverSongInfo {
   background-color: #3c415c;
   height: auto;
-  width: 560px;
+  width: 250px;
   padding: 10px;
-}
-
-.badge {
-  margin-right: 2%;
-  background-color: #b4a5a5;
-  color: black;
-}
-
-img {
-  border-radius: 15px;
-  width: 100px;
-  align-self: center;
-  margin-bottom: 10px;
 }

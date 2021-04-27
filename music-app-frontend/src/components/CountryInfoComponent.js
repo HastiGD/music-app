@@ -1,3 +1,5 @@
+import "../DiscoverCountryInfo.css";
+
 export default function CountryInfoComponent({ country, countryInfo }) {
   const renderCapital = (obj) => {
     if (obj && Object.keys(obj).length === 0 && obj.constructor === Object) {
@@ -22,8 +24,8 @@ export default function CountryInfoComponent({ country, countryInfo }) {
   };
   return (
     <div>
-      <div className="card w-75">
-        <div className="card-body" style={{ backgroundColor: "#f4f1f1" }}>
+      <div className="card cardDiscoverCountryInfo">
+        <div className="card-body p-0">
           <h5 className="card-title fw-bold" style={{ color: "black" }}>
             {country}
           </h5>

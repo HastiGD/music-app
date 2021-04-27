@@ -67,7 +67,7 @@ export default function DiscoverPage({ onError }) {
       if (alert) {
         setAlert(false);
       }
-      if (label === "Previous") {
+      if (label === "Prev") {
         if (index > 0) {
           setIndex(index - 1);
         }
@@ -79,56 +79,79 @@ export default function DiscoverPage({ onError }) {
         }
       }
     }
+    let iconName =
+      "bi bi-caret-" + (label === "Prev" ? "left" : "right") + "-fill ";
     return (
       <Button
         type="button"
-        className={"btn btn-secondary p-0 " + label}
+        className={"btn btn-secondary p-1 fw-light " + label}
         aria-label={label}
         onClick={clickHandler}
       >
         {label}
+        <span>
+          <i className={iconName}></i>
+        </span>
       </Button>
     );
   };
 
-  console.log("Rendering New Video ");
+  console.log("Rendering Discover Page");
   return (
-    <div>
+    <div className="container-fluid display-flex">
       {toError ? <Redirect to="/error" /> : null}
-      <h1 className="display-6 fs-2">
-        Here's what people are listening to in {country}
-      </h1>
-      <br />
-      <h2>A</h2>
-      <h3>Heading</h3>
-      <h4>Progression</h4>
-      <div>
-        <CountryInfoComponent country={country} countryInfo={countryInfo} />
-      </div>
-      <br />
-      <br />
-      <div className="container-fluid align-items-center">
-        <div className="d-inline-block"></div>
-        {alert ? (
-          <AlertComponent
-            type="secondary"
-            message="You've reached the end!"
-          ></AlertComponent>
-        ) : null}
-        <div className="d-inline-block">
-          <div>{PaginationButton("Previous")}</div>
-          <div>{renderVideo(songInfo.src)}</div>
-          <div>{PaginationButton("Next")}</div>
-          <div>
-            <DiscoverSongInfoComponent
-              user={songInfo.user}
-              date={songInfo.date}
-              desc={songInfo.desc}
-              genres={songInfo.genres}
-            ></DiscoverSongInfoComponent>
+      <div className="row justify-content-start">
+        <div className="col-md-9">
+          <h1> A level one heading</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+            perspiciatis laudantium quos totam aspernatur, amet atque
+            exercitationem consequuntur ullam saepe nam sequi eum similique
+            corporis! Assumenda, quo. Voluptas, ex, expedita.
+          </p>
+          <div className="row align-items-center justify-content-evenly">
+            <h2>Here's what people are listening to in {country}</h2>
+            <div className="col-1 text-center">
+              <div>{PaginationButton("Prev")}</div>
+            </div>
+            <div className="col-sm-9 text-center">
+              {alert ? (
+                <AlertComponent
+                  type="secondary"
+                  message="You've reached the end!"
+                ></AlertComponent>
+              ) : null}
+              <div>{renderVideo(songInfo.src)}</div>
+            </div>
+            <div className="col-1 text-center">
+              <div>{PaginationButton("Next")}</div>
+            </div>
           </div>
         </div>
-        <div className="d-inline-block"></div>
+        <div className="col-md-3">
+          <h1>Country Info</h1>
+          <CountryInfoComponent country={country} countryInfo={countryInfo} />
+          <br />
+          <h1>Song Info</h1>
+          <DiscoverSongInfoComponent
+            user={songInfo.user}
+            date={songInfo.date}
+            desc={songInfo.desc}
+            genres={songInfo.genres}
+          ></DiscoverSongInfoComponent>
+        </div>
+      </div>
+      <hr />
+      <div className="row">
+        <h2>Are you from {country}?</h2>
+        <p>
+          Help curious listeners from around the world by uploading some local
+          music from your home country! Mainstream music definitely has it's
+          place, but we think impromptu music is way cooler! Add a youtube video
+          of your favorite street performer, underground band, church or
+          speakeasy club. The rythem is sure to draw travelers from far and
+          wide.
+        </p>
       </div>
     </div>
   );
