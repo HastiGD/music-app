@@ -34,7 +34,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
     <div>
       <nav
         className="navbar navbar-expand-xxl navbar-dark"
-        style={{ backgroundColor: "#39085C" }}
+        style={{ backgroundColor: "#2B0645" }}
       >
         <div className="container-fluid m-0">
           <button
