@@ -64,7 +64,7 @@ function App() {
     setToError(false);
   }
 
-  console.log("Rendering App toError ");
+  console.log("Rendering App");
   return (
     <Router>
       <div role="main">

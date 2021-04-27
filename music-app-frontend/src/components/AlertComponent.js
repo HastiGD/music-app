@@ -21,6 +21,12 @@ function createAlert(type, message) {
         {message}
       </div>
     );
+  } else if (type === "secondary") {
+    return (
+      <div class="alert alert-secondary" role="alert" style={{ width: "50%" }}>
+        A simple secondary alert—check it out!
+      </div>
+    );
   }
 }
 
