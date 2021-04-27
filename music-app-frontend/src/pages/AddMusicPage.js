@@ -102,34 +102,34 @@ export default function AddMusicPage() {
     }
   }
 
-  // function onErrorCloseHandler() {
-  //   setShowAlert([false, "", ""]);
-  //   setUrl(undefined);
-  //   setCountry(undefined);
-  //   setDesc(undefined);
-  //   setGenre(undefined);
-  // }
-
   return (
     <div>
-      <div className="formInfo">
-        <h1 className="display-6">Add a new video for your country</h1>
-        <p className="lead">
-          To upload your song, simply find it on YouTube, and copy and paste the
-          url below. Don't forget to tell us more about the song such as it's
-          origins, why you chose to share it, whether or not it has any cultural
-          significance, or anything else you'd like to tell viewers about it!
-        </p>
+      <div className="container-fluid display-flex">
+        <div className="row justify-content-start">
+          <div className="col-md-9">
+            <div className="formInfo">
+              <h1>Add music for your country</h1>
+              <p className="lead">
+                Satisfy our curiosity for unique rythms! To upload your song,
+                simply find it on YouTube, and copy and paste the url below.
+                Don't forget to tell us more about the song such as it's
+                origins, why you chose to share it, whether or not it has any
+                cultural significance, or anything else you'd like viewers to
+                know!
+              </p>
+              <AddMusicFormComponent
+                countriesArray={countriesArr(Countries)}
+                onChange={onChangeHandler}
+                onBlur={onBlurHandler}
+                onSubmit={validateForm}
+                error={showAlert[0]}
+                errorType={showAlert[1]}
+                errorMessage={showAlert[2]}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <AddMusicFormComponent
-        countriesArray={countriesArr(Countries)}
-        onChange={onChangeHandler}
-        onBlur={onBlurHandler}
-        onSubmit={validateForm}
-        error={showAlert[0]}
-        errorType={showAlert[1]}
-        errorMessage={showAlert[2]}
-      />
     </div>
   );
 }

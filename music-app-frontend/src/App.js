@@ -36,6 +36,7 @@ function App() {
     "dominican republic",
     "china",
     "india",
+    "cuba",
   ];
   const randomCountry = countries[Math.floor(Math.random() * countries.length)];
 

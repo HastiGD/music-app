@@ -85,7 +85,8 @@ export default function AddMusicFormComponent({
         <div className="form-group">
           <button
             type="button"
-            className="btn btn-dark text-light fw-light border-secondary"
+            className="btn btn-secondary fw-light"
+            aria-label="submit button"
             onClick={onSubmit}
           >
             Submit

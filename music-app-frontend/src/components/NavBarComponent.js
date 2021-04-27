@@ -53,6 +53,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
           </button>
           <form
             className="d-flex"
+            style={{ width: "50%" }}
             onSubmit={(evt) => {
               evt.preventDefault();
             }}
@@ -83,7 +84,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
 
           <div className="d-inline text-light fw-light">
             Username
-            <i className="bi bi-emoji-smile-fill"></i>
+            <i class="bi bi-person-circle"></i>
           </div>
         </div>
       </nav>
