@@ -131,7 +131,7 @@ export default function DiscoverPage({ onError }) {
             might even find inspiration for a new trip!
           </p>
           <br />
-          <div className="row align-items-center justify-content-evenly">
+          <div className="row align-items-center justify-content-start">
             <h2>Here's what people are listening to in {country}</h2>
             <div className="col-1 text-center">
               <div>{PaginationButton("Prev")}</div>

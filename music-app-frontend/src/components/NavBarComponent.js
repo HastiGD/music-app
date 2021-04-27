@@ -34,7 +34,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
     <div>
       <nav
         className="navbar navbar-expand-xxl navbar-dark"
-        style={{ backgroundColor: "#301b3f" }}
+        style={{ backgroundColor: "#2B0645" }}
       >
         <div className="container-fluid m-0">
           <button
@@ -48,7 +48,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
             </span>
             <span
               className="navbar-toggler-icon"
-              style={{ fontSize: "1.5rem" }}
+              style={{ fontSize: "1.5rem", color: "white" }}
             ></span>
           </button>
           <form

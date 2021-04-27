@@ -1,18 +1,11 @@
 .cardSongInfo {
-  background-color: #3c415c;
-  height: 315px;
+  background-color: #44245c;
+  height: auto;
   width: 15rem;
   padding: 10px;
 }
 .badge {
   margin-right: 2%;
-  background-color: #b4a5a5;
+  background-color: #c7bbd0;
   color: black;
-}
-
-img {
-  border-radius: 15px;
-  width: 100px;
-  align-self: center;
-  margin-bottom: 10px;
 }

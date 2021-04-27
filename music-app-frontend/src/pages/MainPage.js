@@ -74,7 +74,7 @@ export default function MainPage({ country }) {
             visited.
           </p>
           <br />
-          <div className="row align-items-end">
+          <div className="row align-items-top">
             <h2>Check out this song from {capCountry(country)}</h2>
             <div className="col-md-auto">
               <VideoComponent src={src}></VideoComponent>

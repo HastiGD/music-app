@@ -1,7 +1,13 @@
 .cardDiscoverCountryInfo {
-  background-color: #b4a5a5;
+  background-color: #c7bbd0;
   color: black;
   height: auto;
   width: 250px;
   padding: 10px;
+}
+
+.badge {
+  margin-right: 2%;
+  background-color: #c7bbd0;
+  color: black;
 }
