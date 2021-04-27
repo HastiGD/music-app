@@ -38,8 +38,8 @@ export default function DiscoverPage({ onError }) {
         setIndex(0);
       }
     };
-    fetchCountryInfo();
     fetchSongs();
+    fetchCountryInfo();
   }, [country]);
 
   useEffect(() => {
