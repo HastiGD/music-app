@@ -14,11 +14,13 @@ export default function MainPage({ country }) {
 
   // Capitalizes the first letter of the country name
   function capCountry(country) {
-    const words = country.split(" ");
-    let Country = words.map((word) => {
-      return word[0].toUpperCase() + word.substring(1);
-    });
-    return Country.join(" ");
+    if (country !== undefined) {
+      const words = country.split(" ");
+      let Country = words.map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      });
+      return Country.join(" ");
+    }
   }
 
   // Rerender MainPage whenever user searches for new country

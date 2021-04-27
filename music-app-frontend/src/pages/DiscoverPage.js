@@ -4,7 +4,7 @@ import VideoComponent from "../components/VideoComponent.js";
 import DiscoverSongInfoComponent from "../components/DiscoverSongInfoComponent.js";
 import CountryInfoComponent from "../components/CountryInfoComponent.js";
 
-export default function DiscoverPage() {
+export default function DiscoverPage({ onError }) {
   const { state } = useLocation();
   let [country] = useState(state.country);
   let [countryInfo, setCountryInfo] = useState({});
@@ -34,7 +34,7 @@ export default function DiscoverPage() {
       const res = await resRaw.json();
       console.log("RES", res.songs.length);
       if (res.songs.length === 0) {
-        setToError(true);
+        onError(true);
       } else {
         setSongs(res.songs);
         setSrc(res.songs[index].url);

@@ -15,10 +15,10 @@ export default function SongInfoComponent({ user, date, desc, genres }) {
     <div className="card cardSongInfo">
       <div className="card-body p-0">
         <figure>
-          <blockquote class="blockquote">
+          <blockquote className="blockquote">
             <p className="card-text fw-light">"{desc}"</p>
           </blockquote>
-          <figcaption class="blockquote-footer">
+          <figcaption className="blockquote-footer">
             <cite title="Source Title">
               {user} &#183; {postDate(date)}
             </cite>

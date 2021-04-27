@@ -31,7 +31,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
           }}
         >
           <div className="input-group m-1 text-center">
-            <label for="search-form" className="form-label m-2 fw-light">
+            <label htmlFor="search-form" className="form-label m-2 fw-light">
               Country:{" "}
             </label>
             <input
@@ -39,7 +39,7 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
               className="form-control bg-dark text-light border border-secondary"
               id="search-form"
               placeholder="Search"
-              ariaLabel="search form"
+              aria-label="search form"
               onChange={(evt) => {
                 query = evt.target.value;
                 query = query.toLowerCase();

@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import MainPage from "./pages/MainPage.js";
 import AddMusicPage from "./pages/AddMusicPage.js";
 import CountriesPage from "./pages/CountriesPage.js";
@@ -29,22 +34,39 @@ function App() {
     "colombia",
     "iran",
     "dominican republic",
+    "china",
+    "india",
   ];
   const randomCountry = countries[Math.floor(Math.random() * countries.length)];
 
   let [country, setCountry] = useState(randomCountry);
+  let [toError, setToError] = useState(false);
 
   // Callback function for searching in NavBarComponent
-  const handleSearch = (searchQuery) => {
-    setCountry(searchQuery);
-  };
+  function handleSearch(searchQuery) {
+    if (countries.includes(searchQuery)) {
+      setCountry(searchQuery);
+    } else {
+      // redirect here
+      console.log("No video for this country");
+      setToError(true);
+    }
+  }
 
-  console.log("Rendering App");
+  function handleError() {
+    setToError(true);
+  }
+
+  function handleRedirect() {
+    console.log("inredirect");
+    setToError(false);
+  }
+
+  console.log("Rendering App toError ", toError);
   return (
     <Router>
       <div role="main">
         <NavBarComponent onHamburgerClick={openNav} onSearch={handleSearch} />
-
         <div id="mySidenav" className="sidenav" title="Side navbar">
           <button
             type="button"
@@ -61,10 +83,10 @@ function App() {
         <div id="main">
           <Switch>
             <Route path="/error">
-              <ErrorPage />
+              <ErrorPage onRedirect={handleRedirect} />
             </Route>
             <Route path="/discover">
-              <DiscoverPage />
+              <DiscoverPage onError={handleError} />
             </Route>
             <Route path="/countries">
               <CountriesPage />
@@ -76,6 +98,7 @@ function App() {
               <MainPage country={country} />
             </Route>
           </Switch>
+          {toError ? <Redirect to="/error" /> : <Redirect to="/" />}
         </div>
       </div>
     </Router>
