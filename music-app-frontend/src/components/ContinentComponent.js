@@ -11,7 +11,6 @@ export default function ContinentComponent({ continent }) {
     let i;
     let res = [];
     for (i = 0; i < Countries.length; i++) {
-      // console.log(country.code);
       if (countryCodesArray.includes(Countries[i].code)) {
         res.push(
           <li key={"" + Countries[i].code + i}>
@@ -33,7 +32,8 @@ export default function ContinentComponent({ continent }) {
     }
     return res;
   };
-  //
+
+  console.log("Rendering Countries Page");
   return (
     <div className="continentDiv fw-light">
       <ul>{renderCountries(Continents[continent])}</ul>

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Redirect } from "react-router-dom";
+import { Button } from "react-bootstrap-buttons";
 import VideoComponent from "../components/VideoComponent.js";
 import DiscoverSongInfoComponent from "../components/DiscoverSongInfoComponent.js";
 import CountryInfoComponent from "../components/CountryInfoComponent.js";
+import AlertComponent from "../components/AlertComponent.js";
 
 export default function DiscoverPage({ onError }) {
   const { state } = useLocation();
   let [country] = useState(state.country);
   let [countryInfo, setCountryInfo] = useState({});
   let [toError, setToError] = useState(false);
+  let [alert, setAlert] = useState(false);
   let [songs, setSongs] = useState([]);
-  let [index, setIndex] = useState(0);
-  let [src, setSrc] = useState("");
+  let [index, setIndex] = useState(-1);
   let [songInfo, setSongInfo] = useState({
+    src: "",
     user: "",
     date: Date.now().toString(),
     desc: "",
@@ -25,50 +28,70 @@ export default function DiscoverPage({ onError }) {
       const res = await resRaw.json();
       setCountryInfo(res);
     };
-    fetchCountryInfo();
-  }, [country]);
-
-  useEffect(() => {
-    const fetchVideo = async () => {
+    const fetchSongs = async () => {
       const resRaw = await fetch(`/country/${country.toLowerCase()}`);
       const res = await resRaw.json();
-      console.log("RES", res.songs.length);
       if (res.songs.length === 0) {
         onError(true);
       } else {
         setSongs(res.songs);
-        setSrc(res.songs[index].url);
-        setSongInfo({
-          user: res.songs[index].user,
-          date: res.songs[index].date,
-          desc: res.songs[index].description,
-          genres: res.songs[index].genre.split(" "),
-        });
+        setIndex(0);
       }
     };
-    fetchVideo();
+    fetchCountryInfo();
+    fetchSongs();
+  }, [country]);
+
+  useEffect(() => {
+    if (songs.length > 0) {
+      setSongInfo({
+        src: songs[index].url,
+        user: songs[index].user,
+        date: songs[index].date,
+        desc: songs[index].description,
+        genres: songs[index].genre.split(" "),
+      });
+    }
   }, [index]);
 
   function renderVideo(source) {
     return (
       <VideoComponent
-        src={"https://www.youtube.com/embed/" + source}
+        src={"https://www.youtube.com/embed/" + songInfo.src}
       ></VideoComponent>
     );
   }
 
-  function onPrevHandler() {
-    if (index > 0) {
-      setIndex(index - 1);
+  const PaginationButton = (label) => {
+    function clickHandler() {
+      if (alert) {
+        setAlert(false);
+      }
+      if (label === "Previous") {
+        if (index > 0) {
+          setIndex(index - 1);
+        }
+      } else {
+        if (index < songs.length - 1) {
+          setIndex(index + 1);
+        } else {
+          setAlert(true);
+        }
+      }
     }
-  }
+    return (
+      <Button
+        type="button"
+        className={"btn btn-secondary p-0 " + label}
+        aria-label={label}
+        onClick={clickHandler}
+      >
+        {label}
+      </Button>
+    );
+  };
 
-  function onNextHandler() {
-    if (index < songs.length - 1) {
-      setIndex(index + 1);
-    }
-  }
-
+  console.log("Rendering New Video ");
   return (
     <div>
       {toError ? <Redirect to="/error" /> : null}
@@ -85,23 +108,17 @@ export default function DiscoverPage({ onError }) {
       <br />
       <br />
       <div className="container-fluid align-items-center">
+        <div className="d-inline-block"></div>
+        {alert ? (
+          <AlertComponent
+            type="secondary"
+            message="You've reached the end!"
+          ></AlertComponent>
+        ) : null}
         <div className="d-inline-block">
-          <button
-            type="button"
-            className="btn btn-outline-dark p-0 m-3"
-            aria-label="Previous"
-            onClick={onPrevHandler}
-          >
-            <span>
-              <i
-                className="bi bi-caret-left-fill"
-                style={{ fontSize: "3rem" }}
-              ></i>
-            </span>
-          </button>
-        </div>
-        <div className="d-inline-block">
-          <div>{renderVideo(src)}</div>
+          <div>{PaginationButton("Previous")}</div>
+          <div>{renderVideo(songInfo.src)}</div>
+          <div>{PaginationButton("Next")}</div>
           <div>
             <DiscoverSongInfoComponent
               user={songInfo.user}
@@ -111,21 +128,7 @@ export default function DiscoverPage({ onError }) {
             ></DiscoverSongInfoComponent>
           </div>
         </div>
-        <div className="d-inline-block">
-          <button
-            type="button"
-            className="btn btn-outline-dark p-0 m-3"
-            aria-label="Next"
-            onClick={onNextHandler}
-          >
-            <span>
-              <i
-                className="bi bi-caret-right-fill"
-                style={{ fontSize: "3rem" }}
-              ></i>
-            </span>
-          </button>
-        </div>
+        <div className="d-inline-block"></div>
       </div>
     </div>
   );
