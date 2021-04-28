@@ -18,10 +18,13 @@ The goal of this app was to allow people to share music from their home country 
 
 ### Features
 1. View the featured video on the main page, or search for a specific country
+
 ![Homepage](https://github.com/HastiGD/music-app/blob/master/home.png)
 
 2. Add music for your country
+
 ![Add Music Page](https://github.com/HastiGD/music-app/blob/master/add.png)
 
 3. Discover music from around the world
+
 ![Country Page](https://github.com/HastiGD/music-app/blob/master/country.png)
