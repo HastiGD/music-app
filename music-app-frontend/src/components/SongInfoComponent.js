@@ -19,7 +19,7 @@ export default function SongInfoComponent({ user, date, desc, genres }) {
             <p className="card-text fw-light">"{desc}"</p>
           </blockquote>
           <figcaption className="blockquote-footer">
-            <cite title="Source Title">
+            <cite title="Source Title" className="text-light">
               {user} &#183; {postDate(date)}
             </cite>
           </figcaption>
