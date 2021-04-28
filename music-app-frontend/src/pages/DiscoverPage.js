@@ -39,7 +39,11 @@ export default function DiscoverPage({ onError }) {
       const res = await resRaw.json();
       if (res.songs.length === 0) {
         onError(true);
+        setToError(true);
       } else {
+        if (toError) {
+          setToError(false);
+        }
         setSongs(res.songs);
         setIndex(0);
       }
@@ -124,15 +128,9 @@ export default function DiscoverPage({ onError }) {
       {toError ? <Redirect to="/error" /> : null}
       <div className="row justify-content-start">
         <div className="col-md-9">
-          <h1>Ready ...Set ...Go!</h1>
-          <p className="lead">
-            Our international friends are serious about good music so sit back,
-            relax, and take your ears on a trip around the world. Who know, you
-            might even find inspiration for a new trip!
-          </p>
+          <h1>Here's what people are listening to in {country}</h1>
           <br />
           <div className="row align-items-center justify-content-start">
-            <h2>Here's what people are listening to in {country}</h2>
             <div className="col-1 text-center">
               <div>{PaginationButton("Prev")}</div>
             </div>
@@ -151,22 +149,17 @@ export default function DiscoverPage({ onError }) {
           </div>
         </div>
         <div className="col-md-3">
-          <h2>Country</h2>
+          <h2>Info</h2>
           <CountryInfoComponent country={country} countryInfo={countryInfo} />
           <br />
-          <h2>Song</h2>
           <DiscoverSongInfoComponent
             user={songInfo.user}
             date={songInfo.date}
             desc={songInfo.desc}
             genres={songInfo.genres}
           ></DiscoverSongInfoComponent>
-        </div>
-      </div>
-      <hr />
-      <div className="row">
-        <h2>Are you from {country}?</h2>
-        <div className="col-md-9">
+          <br />
+          <h2>Are you from {country}?</h2>
           <p className="fw-light">
             Help curious listeners from around the world by uploading some local
             music from your home country! Mainstream music definitely has it's
@@ -175,8 +168,6 @@ export default function DiscoverPage({ onError }) {
             choir or speakeasy club. The rythm is sure to draw travelers from
             far and wide.
           </p>
-        </div>
-        <div className="col-md-3 text-center">
           <AddMusicButton />
         </div>
       </div>
