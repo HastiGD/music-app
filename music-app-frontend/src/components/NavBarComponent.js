@@ -81,7 +81,6 @@ function NavBarComponent({ onHamburgerClick, onSearch }) {
               <SearchButton></SearchButton>
             </div>
           </form>
-
           <div className="d-inline text-light fw-light">
             Username
             <i class="bi bi-person-circle"></i>
