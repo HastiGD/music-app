@@ -1,5 +1,5 @@
-# World Music App
-The World Music App makes it possible to share and discover music from around the world using YouTube.
+# World Music App v1 - Usability, Accessibility, and Design
+The World Music App utilizes YouTube to enable users to share music from their country, and to discover music from around the world. 
 
 ### Documentation
 Google Slides : [Slides](https://docs.google.com/presentation/d/1LFRa4Wk15TJAeetZc4D8mnSI1PPE-jkmmcWd-9-TAM0/edit?usp=sharing)
