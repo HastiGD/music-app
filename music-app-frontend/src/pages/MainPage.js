@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap-buttons";
 import VideoComponent from "../components/VideoComponent.js";
 import SongInfoComponent from "../components/SongInfoComponent.js";
 import "../MainPage.css";
+// import "./../styles/Mainpage.css"
 
 export default function MainPage({ country }) {
   let history = useHistory();
